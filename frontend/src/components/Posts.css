@@ -1,0 +1,29 @@
+.card-container {
+  top: 370px;
+  position: relative;
+}
+.card-container > h1 {
+  text-align: center;
+}
+.card {
+  display: flex;
+}
+section {
+  background-color: #7fffd4;
+  width: 300px;
+  height: 300px;
+  text-align: center;
+  padding: 10px 0px;
+  margin: 20px;
+}
+button {
+  width: 100px;
+  padding: 5px 0px;
+  border-radius: 20px;
+  border: none;
+  background-color: #002d62;
+  color: wheat;
+}
+.comments {
+  border-top: 1px solid rgb(0, 0, 0, 0.1);
+}

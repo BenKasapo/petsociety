@@ -1,0 +1,29 @@
+.container {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  background-color: #7fffd4;
+  height: 80px;
+  align-items: center;
+}
+.NavMenu {
+  display: flex;
+  justify-content: flex-end;
+}
+.logo {
+  margin-left: 10px;
+}
+ul {
+  list-style-type: none;
+  display: flex;
+  margin-right: 10px;
+}
+ul li {
+  margin: 10px;
+}
+li:hover {
+  font-weight: 600;
+}
