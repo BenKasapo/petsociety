@@ -5,16 +5,32 @@
 .card-container > h1 {
   text-align: center;
 }
+.card-elements {
+  display: flex;
+  flex-direction: column;
+}
 .card {
   display: flex;
+}
+.card-text > p {
+  padding: 10px;
+}
+.card-text > h3 {
+  padding: 10px;
+}
+.image-container {
+  width: 100%;
+}
+.image-container > img {
+  width: 100%;
 }
 section {
   background-color: #7fffd4;
   width: 300px;
-  height: 300px;
   text-align: center;
   padding: 10px 0px;
   margin: 20px;
+  border-radius: 8px;
 }
 button {
   width: 100px;
@@ -22,8 +38,26 @@ button {
   border-radius: 20px;
   border: none;
   background-color: #002d62;
-  color: wheat;
+  color: white;
+  font-weight: 600;
 }
+/* Star of Comments css*/
 .comments {
   border-top: 1px solid rgb(0, 0, 0, 0.1);
+}
+.comments > .titles {
+  font-weight: 200;
+  font-size: 18px;
+}
+.comments > p {
+  background-color: blue;
+}
+
+.comments > button {
+  background-color: #002d62;
+  width: 10%;
+  margin: 10px;
+}
+.comments > .cta-red {
+  background-color: red;
 }

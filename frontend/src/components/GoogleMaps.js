@@ -5,14 +5,13 @@ const style = {
   width: "100%",
   height: "50%",
   margin: "20px 0px  ",
-  border: "10px solid #909090",
 };
 export class MapContainer extends Component {
   state = {
     showingInfoWindow: false,
     activeMarker: {},
     selectedPlace: {},
-    mapCenter: { lat: 35.330529, lng: 33.309899 },
+    mapCenter: { lat: 35.323711, lng: 33.314941 },
   };
 
   onMarkerClick = (props, marker, e) =>
@@ -37,7 +36,7 @@ export class MapContainer extends Component {
         google={this.props.google}
         initialCenter={{
           lat: this.state.mapCenter.lat,
-          lng: this.state.mapCenter.lat,
+          lng: this.state.mapCenter.lng,
         }}
         style={style}
       >

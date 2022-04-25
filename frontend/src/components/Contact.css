@@ -2,10 +2,8 @@
   background-color: #7fffd4;
   border-radius: 20px;
   box-sizing: border-box;
-  height: 500px;
   padding: 20px;
-  width: 800px;
-  align-items: center;
+  width: 50%;
 }
 
 .title {
@@ -61,7 +59,7 @@
 }
 
 .cut-short {
-  width: 50px;
+  width: 120px;
 }
 
 .input:focus ~ .cut,
@@ -86,7 +84,7 @@
 }
 
 .submit {
-  background-color: #002d2;
+  background-color: #002d62;
   border-radius: 12px;
   border: 0;
   box-sizing: border-box;

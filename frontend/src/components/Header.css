@@ -15,6 +15,7 @@
 }
 .logo {
   margin-left: 10px;
+  font-weight: 600;
 }
 ul {
   list-style-type: none;
@@ -23,7 +24,5 @@ ul {
 }
 ul li {
   margin: 10px;
-}
-li:hover {
   font-weight: 600;
 }
