@@ -1,3 +1,42 @@
 .home {
   display: flex;
+  flex-direction: column;
+}
+
+.home .contenaire .posts {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+
+  color: azure;
+}
+.home .contenaire .posts .image_comment {
+  display: flex;
+  border-bottom: 9px solid white;
+  background: #002d62;
+}
+.home .contenaire .posts .image_comment .comment {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin-top: 100px;
+  margin-right: 100px;
+}
+.home .middle {
+  background: blueviolet;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.home .middle :hover {
+  background: rgb(182, 86, 171);
+  height: 300px;
+  color: wheat;
+  text-align: center;
+  font-size: 100px;
+}
+.map{
+  height: 300px;
 }

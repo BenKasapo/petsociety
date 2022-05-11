@@ -1,0 +1,25 @@
+.bodyabout {
+  width: 100%;
+  background: linear-gradient(130deg, #89b4d1, #544a8a);
+}
+.bodyabout .about-us {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  padding-bottom: 30px;
+}
+.bodyabout .about-us .title {
+  align-items: center;
+  text-align: center;
+  font-size: x-large;
+  font-family: Verdana, Tahoma, sans-serif;
+}
+.bodyabout .about-us .span {
+  margin-left: 10px;
+}
+
+.bodyabout .about-us .members {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}

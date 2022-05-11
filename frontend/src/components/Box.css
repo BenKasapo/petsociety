@@ -1,0 +1,40 @@
+.content {
+  
+}
+.subcontent {
+  display: flex;
+  flex-direction: column;
+  border-radius: 30px;
+  background: white;
+  justify-content: space-around;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+  height: 250px;
+  width: 100%;
+  margin-top: 10px;
+}
+.subcontent .title h2 {
+  align-items: center;
+  margin-left: 70px;
+  justify-content: center;
+  margin-top: 35px;
+}
+.littlebox {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  margin-top: 40px;
+}
+.littlebox .icon {
+  width: 50%;
+}
+.littlebox .icon img {
+  width: 100%;
+  padding-left: 10px;
+  padding-bottom: 20px;
+}
+.littlebox .number {
+  margin: 10px;
+  margin-right: 120px;
+  color: teal;
+}
