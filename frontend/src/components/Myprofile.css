@@ -1,0 +1,46 @@
+.profile {
+}
+.profile .contenaireprofil {
+  display: flex;
+  flex-direction: column;
+}
+.profile .contenaireprofil .info {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.profile .contenaireprofil .picture {
+  width: 1320px;
+  height: 300px;
+  display: inline-flex;
+  margin-left: 10px;
+  margin-top: 5px;
+}
+.profile .contenaireprofil .picture > img {
+  width: 100%;
+  height: 100%;
+}
+.profile .contenaireprofil .navbar {
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  background: #002d62;
+  color: white;
+
+  height: 70px;
+  font-size: 25px;
+}
+.profile .contenaireprofil .navbar > ul {
+  margin-left: 20px;
+  justify-content: space-between;
+}
+.actual .tile {
+  margin-top: 5px;
+  border: 1px solid black;
+}
+.actual .posts_user {
+  background: white;
+  display: flex;
+  flex-direction: column;
+
+  height: auto;
+}

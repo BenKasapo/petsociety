@@ -2,6 +2,9 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./prelog.css";
 function Prelogin() {
+  const log_function = () => {
+    <link to="/myprofile" />;
+  };
   return (
     <div>
       <div className="main_cont">
@@ -14,7 +17,7 @@ function Prelogin() {
             <p> Password</p>
             <input type="password" name="" placeholder="Enter your password" />
 
-            <input type="submit" name="" value="Login" />
+            <input type="submit" name="" value="Login" onClick={log_function} />
 
             <a href="#"> Password forget ?</a>
 

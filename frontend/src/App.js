@@ -1,5 +1,4 @@
 import Header from "./components/Header";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from "./components/Home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Aboutpage from "./components/Aboutpage";
@@ -8,6 +7,7 @@ import Search from "./components/Search";
 import Lostpets from "./components/Lostpets";
 import Foundpets from "./components/Foundpets";
 import Myprofile from "./components/Myprofile";
+import Contact from "./components/Contact";
 function App() {
   return (
     <div className="App">
@@ -22,6 +22,7 @@ function App() {
           <Route path="/Lostpets" element={<Lostpets />} />
           <Route path="/Foundpets" element={<Foundpets />} />
           <Route path="/Myprofile" element={<Myprofile />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </Router>
     </div>

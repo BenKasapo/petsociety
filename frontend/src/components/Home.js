@@ -9,7 +9,7 @@ const Home = () => {
     <div className="home">
       <div className="contenaire">
         <div className="map">
-         <GoogleMaps/>
+          <GoogleMaps />
         </div>
         <div className="posts">
           <h1> What is new today</h1>
@@ -18,6 +18,9 @@ const Home = () => {
               <Posts
                 dog="https://www.cumberland.nsw.gov.au/sites/default/files/styles/16_9/public/2021-01/animals-lost-pet.jpg?h=b7ff05a9&itok=S2TCAwDa"
                 dogname={"Miauche"}
+                firsttext={
+                  " this Dog is missing , kindly contact me if you see him this 2 last day. his name is miauche and he loves sausage  "
+                }
               />
             </div>
             <div className="comment">
@@ -47,6 +50,9 @@ const Home = () => {
               <Posts
                 dog="https://www.daysoftheyear.com/cdn-cgi/image/dpr=1%2Cf=auto%2Cfit=cover%2Cheight=650%2Cmetadata=none%2Conerror=redirect%2Cq=85%2Cwidth=968/wp-content/uploads/lost-dog-awareness-day1-scaled.jpg"
                 dogname={"Spyke"}
+                firsttext={
+                  "hi fam , my dog is so strange , early in the morning he took all his stuff and run away from my appart . please help me to catch him ."
+                }
               />
             </div>
             <div className="comment">
@@ -76,6 +82,9 @@ const Home = () => {
               <Posts
                 dog="https://www.ballarat.vic.gov.au/sites/default/files/styles/content_header/public/page/field_image/2019-03/Lost%20dog.jpg?itok=6nBc22JC"
                 dogname={"Max"}
+                firsttext={
+                  "Need help ! i lost my dog max . please he has diabete so i need to find him as soon as possible "
+                }
               />
             </div>
             <div className="comment">

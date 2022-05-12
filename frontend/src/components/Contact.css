@@ -1,9 +1,10 @@
 .form {
-  background-color: #7fffd4;
+  background: rgb(179, 93, 167);
   border-radius: 20px;
   box-sizing: border-box;
   padding: 20px;
   width: 50%;
+  margin-left: 350px;
 }
 
 .title {
@@ -47,7 +48,7 @@
 }
 
 .cut {
-  background-color: #7fffd4;
+  background: rgb(179, 93, 167);
   border-radius: 10px;
   height: 20px;
   left: 20px;

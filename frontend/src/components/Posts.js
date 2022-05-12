@@ -2,7 +2,7 @@ import Footer from "./Footer";
 
 import Commentpost from "./Commentpost";
 import "./Posts.css";
-const Posts = ({ dog, dogname }) => {
+const Posts = ({ dog, dogname, firsttext }) => {
   return (
     <div className="card-container">
       <div className="card">
@@ -13,12 +13,7 @@ const Posts = ({ dog, dogname }) => {
             </div>
             <div className="card-text">
               <h1>{dogname}</h1>
-              <p>
-                This dog is lost for days now and please help us find it for us.
-                This dog is lost for days now and please help us find it for us
-                This dog is lost for days now and please help us find it for us
-                This dog is lost for days now and please help us find it for us
-              </p>
+              <p>{firsttext}</p>
               <h3>Contact +905338330147 </h3>
               <button>COMMENT</button>
             </div>

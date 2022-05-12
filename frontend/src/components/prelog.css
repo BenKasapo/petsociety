@@ -1,9 +1,10 @@
 .main_cont {
   background-position: center;
-  height: 100px;
+  height: 400px;
 }
 
 .main_cont .element {
+  margin-top: 20px;
   width: 320px;
   height: 420px;
   background: #002d62;
