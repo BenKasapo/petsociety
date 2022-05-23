@@ -5,6 +5,7 @@ import "./prelog.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { login } from "../features/auth";
+import { Button } from "react-bootstrap";
 
 function Prelogin(setAlert) {
   const { loading, error } = useSelector((state) => ({ ...state.auth }));
@@ -57,7 +58,9 @@ function Prelogin(setAlert) {
               placeholder="Enter your password"
               onChange={(e) => onChange(e)}
             />
-            <button type="submit">Send</button>
+            <Button className="btn mx-auto" type="submit">
+              Send
+            </Button>
           </form>
         </div>
       </div>

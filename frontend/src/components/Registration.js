@@ -5,6 +5,7 @@ import { connect, useDispatch, useSelector } from "react-redux";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { register } from "../features/auth";
+import { Button } from "react-bootstrap";
 
 function Registration() {
   const { loading, error } = useSelector((state) => ({ ...state.auth }));
@@ -85,7 +86,9 @@ function Registration() {
           </div>
           <div />
 
-          <button type="submit">Send</button>
+          <Button className="btn " type="submit">
+            Send
+          </Button>
         </form>
       </div>
     </div>

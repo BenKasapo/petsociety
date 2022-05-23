@@ -3,6 +3,7 @@ import Footer from "./Footer";
 import Prelogin from "./Prelogin";
 import Registration from "./Registration";
 import "./Toggle.css";
+import { Button } from "react-bootstrap";
 const Toggle = () => {
   const [toggle, settoggle] = useState(true);
   const toggclick = () => {
@@ -11,11 +12,11 @@ const Toggle = () => {
 
   return (
     <div>
-      <div className="btn">
-        {toggle ? <Prelogin /> : <Registration />}
-        <button type="button" onClick={toggclick} class="toggle-btn">
+      <div className="btn2 ">
+        <Button className="btn mt-2 mx-2" type="button" onClick={toggclick}>
           {toggle ? "Register" : "Login"}
-        </button>
+        </Button>
+        {toggle ? <Prelogin /> : <Registration />}
       </div>
       <Footer />
     </div>
