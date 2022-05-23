@@ -1,99 +1,95 @@
-import React from "react";
+import { React, useEffect, useState } from "react";
 import "./Registration.css";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { connect, useDispatch, useSelector } from "react-redux";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { register } from "../features/auth";
 
 function Registration() {
+  const { loading, error } = useSelector((state) => ({ ...state.auth }));
+  const [formData, setformData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    phoneNumber: "",
+  });
+  const { name, email, password, phoneNumber } = formData; //instead of using formData.email anytime'email'
+
+  const onChange = (e) =>
+    setformData({ ...formData, [e.target.name]: e.target.value });
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    error && toast.error(error);
+  }, [error]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (name && email && password && phoneNumber) {
+      dispatch(register({ formData, navigate, toast }));
+    }
+  };
+
   return (
     <div className="contentregis">
       <div className="body">
         <div className="titre">Registration</div>
-        <form>
+        <ToastContainer />
+        <form onSubmit={handleSubmit}>
           <div div className="details"></div>
           <div className="personal-details">
             <div className="little_box">
               <span className="dtls">Full Name </span>
               <input
                 type="text"
-                name=""
+                name="name"
+                value={name}
+                onChange={(e) => onChange(e)}
                 placeholder="Enter your username"
-                required
               />
             </div>
-            <div className="little_box">
-              <span className="dtls">Username </span>
-              <input
-                type="text"
-                name=""
-                placeholder="Enter your username"
-                required
-              />
-            </div>
+
             <div className="little_box">
               <span className="dtls">Email </span>
               <input
                 type="text"
-                name=""
+                name="email"
+                value={email}
+                onChange={(e) => onChange(e)}
                 placeholder="Enter your username"
-                required
               />
             </div>
             <div className="little_box">
               <span className="dtls">Phone Number </span>
               <input
                 type="text"
-                name=""
+                name="phoneNumber"
+                value={phoneNumber}
+                onChange={(e) => onChange(e)}
                 placeholder="Enter your username"
-                required
               />
             </div>
             <div className="little_box">
               <span className="dtls">Password</span>
               <input
-                type="text"
-                name=""
+                type="password"
+                name="password"
+                value={password}
+                onChange={(e) => onChange(e)}
                 placeholder="Enter your username"
-                required
-              />
-            </div>
-            <div className="little_box">
-              <span className="dtls">Confirm Password </span>
-              <input
-                type="text"
-                name=""
-                placeholder="Enter your username"
-                required
               />
             </div>
           </div>
           <div />
-          <div className="gender-details">
-            <input type="radio" name="gender" id="dot-1" />
-            <input type="radio" name="gender" id="dot-2" />
-            <input type="radio" name="gender" id="dot-3" />
-            <span className="gender-title">Gender</span>
-            <div className="categories">
-              <label for="dot-1">
-                <span class="space one "></span>
-                <span className="gender">Male</span>
-              </label>
-              <label for="dot-2">
-                <span class="space two "></span>
-                <span className="gender">Female</span>
-              </label>
-              <label for="dot-3">
-                <span class="space three"></span>
-                <span className="gender">Other</span>
-              </label>
-            </div>
-          </div>
 
-          <div className="button">
-            <input type="submit" name="" value="Register" />
-          </div>
+          <button type="submit">Send</button>
         </form>
       </div>
     </div>
   );
 }
 
-export default Registration;
+export default connect()(Registration);

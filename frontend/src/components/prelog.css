@@ -40,7 +40,8 @@ h1 {
   padding: 0;
   font-weight: bold;
 }
-.element input[type="text"],
+.element input[type="Email"],
+input[type="text"],
 input[type="password"] {
   width: 100%;
   margin-bottom: 20px;

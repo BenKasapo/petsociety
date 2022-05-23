@@ -8,6 +8,8 @@ import Lostpets from "./components/Lostpets";
 import Foundpets from "./components/Foundpets";
 import Myprofile from "./components/Myprofile";
 import Contact from "./components/Contact";
+import Add_post from "./components/Add_post";
+
 function App() {
   return (
     <div className="App">
@@ -22,7 +24,7 @@ function App() {
           <Route path="/Lostpets" element={<Lostpets />} />
           <Route path="/Foundpets" element={<Foundpets />} />
           <Route path="/Myprofile" element={<Myprofile />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/addpost" element={<Add_post />} />
         </Routes>
       </Router>
     </div>

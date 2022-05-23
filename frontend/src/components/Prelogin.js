@@ -1,27 +1,63 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { React, useEffect, useState } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { connect, useDispatch, useSelector } from "react-redux";
 import "./prelog.css";
-function Prelogin() {
-  const log_function = () => {
-    <link to="/myprofile" />;
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { login } from "../features/auth";
+
+function Prelogin(setAlert) {
+  const { loading, error } = useSelector((state) => ({ ...state.auth }));
+  const [formData, setformData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+  const { name, email, password } = formData; //instead of using formData.email anytime'email'
+
+  const onChange = (e) =>
+    setformData({ ...formData, [e.target.name]: e.target.value });
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    error && toast.error(error);
+  }, [error]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (email && password) {
+      dispatch(login({ formData, navigate, toast }));
+    }
   };
+
   return (
     <div>
+      <ToastContainer />
       <div className="main_cont">
         <div className="element">
           <img src="Images/avtr.png" className="avatar"></img>
           <h1>Login here</h1>
-          <form>
-            <p> Username</p>
-            <input type="text" name="" placeholder="Enter your username" />
+
+          <form onSubmit={handleSubmit}>
+            <p> Email</p>
+            <input
+              type="email"
+              value={email}
+              name="email"
+              placeholder="Enter your email"
+              onChange={(e) => onChange(e)}
+            />
             <p> Password</p>
-            <input type="password" name="" placeholder="Enter your password" />
-
-            <input type="submit" name="" value="Login" onClick={log_function} />
-
-            <a href="#"> Password forget ?</a>
-
-            <br />
+            <input
+              type="password"
+              value={password}
+              name="password"
+              placeholder="Enter your password"
+              onChange={(e) => onChange(e)}
+            />
+            <button type="submit">Send</button>
           </form>
         </div>
       </div>
@@ -29,4 +65,4 @@ function Prelogin() {
   );
 }
 
-export default Prelogin;
+export default connect(null, {})(Prelogin);

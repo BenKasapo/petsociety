@@ -17,7 +17,7 @@ const Myprofile = () => {
         <div className="navbar">
           <ul>
             <li>Posts</li>
-            <Link to="/contact">
+            <Link to="/addpost">
               <li>Add Post</li>
             </Link>
             <li>Messages</li>
