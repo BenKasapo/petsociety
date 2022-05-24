@@ -18,7 +18,7 @@ router.post(
     [check("petType", "petType is required").not().isEmpty()],
     [check("petLostLocation", "petLostLocation is required").not().isEmpty()],
     [check("postType", "postType is required").not().isEmpty()],
-    [check("petPicture", "petPicture is required").not().isEmpty()],
+    // [check("petPicture", "petPicture is required").not().isEmpty()],
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -28,7 +28,9 @@ router.post(
 
     try {
       //const user = await User.findById(req.user.id).select("-password");
-      const user = await User.findById(user_id).select("-password");
+      const user = await User.findById(req.user.id).select("-password");
+
+      console.log(req.body)
 
       const newPost = new Post({
         text: req.body.text,

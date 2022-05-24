@@ -4,8 +4,8 @@ const { check, validationResult } = require("express-validator");
 
 module.exports = function (req, res, next) {
   // Get the token from Header
-  const token = req.header("x-auth-token");
-
+  const token = req.header("authorization").split(" ")[1];
+  console.log(token)
   // check if no token
   if (!token) {
     return res.status(401).json({ msg: "No token,authorization denied" });

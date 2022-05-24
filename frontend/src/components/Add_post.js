@@ -6,12 +6,12 @@ import {
   MDBBtn,
   MDBInput,
 } from "mdb-react-ui-kit";
-import ChipInput from "material-ui-chip-input";
 import FileBase from "react-file-base64";
 import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createTour } from "../features/posts";
+import axios from "axios";
 
 const initialState = {
   petName: "",
@@ -60,6 +60,12 @@ const Add_post = () => {
       /*  dispatch(updateTour({ id, updatedTourData, toast, navigate }));*/
       //  }
       handleClear();
+      // console.log(JSON.parse(localStorage.getItem("profile"))["token"])
+      // axios.post("http://localhost:5000/api/posts", tourData, {
+      //   headers: {
+      //     "Authorization": `Bearer ${JSON.parse(localStorage.getItem("profile"))["token"]}`
+      //   }
+      // })
     }
   };
   const onInputChange = (e) => {
