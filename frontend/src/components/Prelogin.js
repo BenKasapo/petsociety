@@ -9,6 +9,7 @@ import { Button } from "react-bootstrap";
 
 function Prelogin(setAlert) {
   const { loading, error } = useSelector((state) => ({ ...state.auth }));
+
   const [formData, setformData] = useState({
     name: "",
     email: "",
@@ -39,6 +40,7 @@ function Prelogin(setAlert) {
       <div className="main_cont">
         <div className="element">
           <img src="Images/avtr.png" className="avatar"></img>
+
           <h1>Login here</h1>
 
           <form onSubmit={handleSubmit}>
@@ -58,7 +60,7 @@ function Prelogin(setAlert) {
               placeholder="Enter your password"
               onChange={(e) => onChange(e)}
             />
-            <Button className="btn mx-auto" type="submit">
+            <Button className="btn " type="submit">
               Send
             </Button>
           </form>

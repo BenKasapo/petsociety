@@ -9,8 +9,15 @@ import Foundpets from "./components/Foundpets";
 import Myprofile from "./components/Myprofile";
 import Contact from "./components/Contact";
 import Add_post from "./components/Add_post";
-
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setUser } from "./features/auth";
 function App() {
+  const dispatch = useDispatch();
+  const user = JSON.parse(localStorage.getItem("profile"));
+  useEffect(() => {
+    dispatch(setUser(user));
+  }, []);
   return (
     <div className="App">
       <Router>
