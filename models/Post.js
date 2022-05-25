@@ -13,7 +13,7 @@ const PostSchema = new mongoose.Schema({
   ],
   petName: { type: String, required: true },
   petType: { type: String, required: true },
-  petPicture: { type: String, required: true },
+  petPicture: { type: String, required: false },
   petLostLocation: { type: String, required: true },
   postType: { type: String, required: true },
 });
