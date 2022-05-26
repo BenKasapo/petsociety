@@ -6,8 +6,8 @@ import Commentpost from "./Commentpost.js";
 import "./Home.css";
 const Home = () => {
   return (
-    <div className="home">
-      <div className="contenaire">
+    <div className="homepage">
+      <div className="contenairehome">
         <div className="map">
           <GoogleMaps />
         </div>

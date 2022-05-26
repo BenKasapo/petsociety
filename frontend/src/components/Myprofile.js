@@ -3,7 +3,10 @@ import Footer from "./Footer";
 import { Link } from "react-router-dom";
 import "./Myprofile.css";
 import Posts from "./Posts.js";
+import { useSelector } from "react-redux";
 const Myprofile = () => {
+  const { user } = useSelector((state) => ({ ...state.auth }));
+
   return (
     <div className="profile">
       <div className="contenaireprofil">
@@ -11,18 +14,23 @@ const Myprofile = () => {
           <img src="Images/owner.jpg"></img>
         </div>
         <div className="info">
-          <h2>Martina Ngonzalesse</h2>
+          {user?.result?._id && (
+            <>
+              <h5> {user?.result?.name}</h5>
+            </>
+          )}
           <h>99300.lefkosa (tunahan appart) </h>
         </div>
-        <div className="navbar">
+        <div className="navbarprofile">
           <ul>
             <li>Posts</li>
             <Link to="/addpost">
               <li>Add Post</li>
             </Link>
-            <li>Messages</li>
             <li>Community</li>
-            <li>Actuality</li>
+            <Link to="/addpost">
+              <li>Logout</li>
+            </Link>
           </ul>
         </div>
         <div className="actual">

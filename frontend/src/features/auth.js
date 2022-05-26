@@ -7,7 +7,7 @@ export const login = createAsyncThunk(
     try {
       const response = await Api.signIn(formData);
       toast.success("Login successfully");
-      //navigate("/");
+      navigate("/Myprofile");
       return response.data;
     } catch (err) {
       return rejectWithValue(err.response.data);
@@ -21,7 +21,7 @@ export const register = createAsyncThunk(
     try {
       const response = await Api.signUp(formData);
       toast.success("Register Successfully");
-      //navigate("/");
+      navigate("/toggle");
       return response.data;
     } catch (err) {
       return rejectWithValue(err.response.data);

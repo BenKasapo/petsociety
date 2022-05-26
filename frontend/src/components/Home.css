@@ -1,9 +1,9 @@
-.home {
+.homepage {
   display: flex;
   flex-direction: column;
 }
 
-.home .contenaire .posts {
+.homepage .contenairehome .posts {
   display: flex;
   flex-direction: column;
   margin-top: 10px;
@@ -12,31 +12,31 @@
 
   color: azure;
 }
-.home .contenaire .posts .image_comment {
+.homepage .contenairehome .posts .image_comment {
   display: flex;
   border-bottom: 9px solid white;
   background: #002d62;
 }
-.home .contenaire .posts .image_comment .comment {
+.homepage .contenairehome .posts .image_comment .comment {
   display: flex;
   flex-direction: column;
   width: 70%;
   margin-top: 100px;
   margin-right: 100px;
 }
-.home .middle {
+.homepage .middle {
   background: blueviolet;
   align-items: center;
   justify-content: space-between;
 }
 
-.home .middle :hover {
+.homepage .middle :hover {
   background: rgb(182, 86, 171);
   height: 300px;
   color: wheat;
   text-align: center;
   font-size: 100px;
 }
-.map{
+.map {
   height: 300px;
 }

@@ -4,10 +4,10 @@ import Commentpost from "./Commentpost";
 import "./Posts.css";
 const Posts = ({ dog, dogname, firsttext }) => {
   return (
-    <div className="card-container">
-      <div className="card">
+    <div className="card-containerpost">
+      <div className="cardpost">
         <div className="sectionpost">
-          <div className="card-elements">
+          <div className="card-elementspost">
             <div className="image-container">
               <img src={dog} alt="Lost Dog" />
             </div>

@@ -1,14 +1,14 @@
-.card-container {
+.card-containerpost {
   position: relative;
 }
-.card-container > h1 {
+.card-containerpost > h1 {
   text-align: center;
 }
-.card-elements {
+.card-elementspost {
   display: flex;
   flex-direction: column;
 }
-.card {
+.cardpost {
   display: flex;
 
   background: #002d62;
@@ -26,7 +26,7 @@
   width: 100%;
 }
 .sectionpost {
-  width: 55%;
+  width: 75%;
   text-align: center;
   padding: 10px 0px;
   margin: 20px;
@@ -38,7 +38,7 @@
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
 }
-section {
+sectionpost {
   width: 300px;
   text-align: center;
   padding: 10px 0px;

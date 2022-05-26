@@ -7,11 +7,13 @@ import {
   MDBInput,
 } from "mdb-react-ui-kit";
 import FileBase from "react-file-base64";
+//import ChipInput from "material-ui-chip-input";
 import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createTour } from "../features/posts";
 import axios from "axios";
+import "./Add_post.css";
 
 const initialState = {
   petName: "",
@@ -85,18 +87,9 @@ const Add_post = () => {
   };
 
   return (
-    <div
-      style={{
-        margin: "auto",
-        padding: "15px",
-        width: "650px",
-        alignContent: "center",
-        marginTop: "250px",
-      }}
-      className="container"
-    >
+    <div className="addpostcont">
       <MDBCard alignment="center">
-        <h5>{/*id?"Update Tour" :*/ "Add Tour"}</h5>
+        <h5>{/*id?"Update Tour" :*/ "Add Post"}</h5>
         <MDBCardBody>
           <MDBValidation onSubmit={handleSubmit} className="row g-3" noValidate>
             <div className="col-md-12">

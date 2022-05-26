@@ -36,7 +36,7 @@ function Registration() {
 
   return (
     <div className="contentregis">
-      <div className="body">
+      <div className="bodyregis">
         <div className="titre">Registration</div>
         <ToastContainer />
         <form onSubmit={handleSubmit}>

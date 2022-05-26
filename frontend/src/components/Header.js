@@ -4,14 +4,9 @@ import { useSelector } from "react-redux";
 const Header = () => {
   const { user } = useSelector((state) => ({ ...state.auth }));
   return (
-    <div className="container">
+    <div className="containerh">
       <div className="logo">PETSOCIETY</div>
       <div className="NavMenu">
-        {user?.result?._id && (
-          <>
-            <h5>logged as : {user?.result?.name}</h5>
-          </>
-        )}
         <ul>
           <Link to="/">
             <li>HOME</li>
@@ -24,10 +19,14 @@ const Header = () => {
           </Link>
           <Link to="/toggle">
             <li>SIGN IN</li>
-          </Link>
-          <Link to="/Myprofile">
-            <li>My profile</li>
-          </Link>
+          </Link>{" "}
+          {user?.result?._id && (
+            <>
+              <Link to="/Myprofile">
+                <li>My profile</li>
+              </Link>
+            </>
+          )}
         </ul>
       </div>
     </div>
