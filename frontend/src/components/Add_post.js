@@ -96,12 +96,12 @@ const Add_post = () => {
               <MDBInput
                 placeholder="Enter The Pet_name"
                 type="text"
-                value={petName || ""}
+                value={petName}
                 name="petName"
                 onChange={onInputChange}
                 className="form-control"
                 required
-                invalid
+                /*invalid*/
                 validation="Please provide title"
               />
             </div>

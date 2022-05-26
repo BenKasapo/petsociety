@@ -2,11 +2,8 @@
   margin: auto;
   padding: 15px;
   width: 500px;
-  height: 50px;
+  /*height: 50px;*/
   align-items: center;
   margin-top: 50px;
   border: 2px solid blue;
-}
-.navbarprofile {
-  justify-content: flex-end;
 }
