@@ -5,32 +5,37 @@ import Commentpost from "./Commentpost.js";
 import "./Home.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getTours } from "../features/posts.js";
+import { useEffect } from "react";
 
 const Home = () => {
-  const { tours, loading } = useSelector((state) => ({ ...state.tour }));
+  const { tours, loading } = useSelector((state) => ({ ...state.post }));
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getTours());
+  }, []);
+
+  if (loading) {
+    return <h2>Loading...</h2>;
+  }
   return (
     <div className="homepage">
       <div className="contenairehome">
-        <div className="map">
-          <GoogleMaps />
-        </div>
-
-        <div>
-          {tours && tours.map((item, index) => <Posts key={index} {...item} />)}
-        </div>
+        <div className="map">{/* <GoogleMaps />*/}</div>
 
         <div className="posts">
           <h1> What is new today</h1>
           <div className="image_comment">
             <div className="image">
-              <Posts
-                petPicture="https://www.cumberland.nsw.gov.au/sites/default/files/styles/16_9/public/2021-01/animals-lost-pet.jpg?h=b7ff05a9&itok=S2TCAwDa"
-                petName={"Miauche"}
-                text={
-                  " this Dog is missing , kindly contact me if you see him this 2 last day. his name is miauche and he loves sausage  "
-                }
-              />
+              <div>{tours.length === 0 && <p> No posts found</p>}</div>
+              <div>
+                {tours &&
+                  tours.map(
+                    (item, index) => (
+                      <Posts key={index} {...item} />
+                    ) /*<Posts key={index} {...item} />*/
+                  )}
+              </div>
             </div>
             <div className="comment">
               <Commentpost
@@ -54,6 +59,8 @@ const Home = () => {
               />
             </div>
           </div>
+        </div>
+        {/*
           <div className="image_comment">
             <div className="image">
               <Posts
@@ -118,10 +125,12 @@ const Home = () => {
               />
             </div>
           </div>
-        </div>
+              </div>*/}
         <div className="middle">
           <h3>Your pet is your family . . .</h3>
         </div>
+
+        <h1>here</h1>
         <div className="footer">
           <Footer />
         </div>

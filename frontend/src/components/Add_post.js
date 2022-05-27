@@ -90,7 +90,7 @@ const Add_post = () => {
     <div className="addpostcont">
       <MDBCard alignment="center">
         <h5>{/*id?"Update Tour" :*/ "Add Post"}</h5>
-        <MDBCardBody>
+        <MDBCardBody className="black">
           <MDBValidation onSubmit={handleSubmit} className="row g-3" noValidate>
             <div className="col-md-12">
               <MDBInput
@@ -101,7 +101,7 @@ const Add_post = () => {
                 onChange={onInputChange}
                 className="form-control"
                 required
-                /*invalid*/
+                invalid
                 validation="Please provide title"
               />
             </div>

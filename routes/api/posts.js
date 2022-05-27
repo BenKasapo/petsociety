@@ -1,4 +1,5 @@
 const express = require("express");
+const mongoose = require("mongoose");
 const router = express.Router();
 const { check, validationResult } = require("express-validator");
 const auth = require("../../middleware/auth");
@@ -30,7 +31,7 @@ router.post(
       //const user = await User.findById(req.user.id).select("-password");
       const user = await User.findById(req.user.id).select("-password");
 
-      console.log(req.body)
+      console.log(req.body);
 
       const newPost = new Post({
         text: req.body.text,
@@ -58,6 +59,23 @@ router.post(
 router.get("/", async (req, res) => {
   try {
     const posts = await Post.find().populate("user", ["name"]);
+    console.log("number of posts returned : ", posts.length);
+    res.json(posts);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+});
+
+/**
+ *  @route  Get api/posts/user_posts
+    @desc   Get Post by userID
+    @access Private
+ */
+router.get("/user_posts", auth, async (req, res) => {
+  try {
+    const posts = await Post.find({ user: req.user.id });
+    console.log("number of posts returned : ", posts.length);
     res.json(posts);
   } catch (err) {
     console.error(err.message);
@@ -99,12 +117,10 @@ router.delete("/:id", auth, async (req, res) => {
 
     //Check user
     if (post.user.toString() !== req.user.id) {
-      return res.status(401).json({ msg: "User not authorised" });
-
-      await post.remove();
-
-      res.json({ msg: "Post removed" });
+      return res.status(401).json({ msg: "User not authorized" });
     }
+    await post.remove();
+    res.json({ msg: "Post removed" });
   } catch (err) {
     console.error(err.message);
     if (err.kind == "ObjectId") {
@@ -113,6 +129,64 @@ router.delete("/:id", auth, async (req, res) => {
     res.status(500).send("Server error");
   }
 });
+
+// @route  Post api/posts
+// @desc   Update a Post
+// @access Private
+router.patch(
+  "/:id",
+
+  auth,
+  /*    [check("text", "Text is required").not().isEmpty()],
+    [check("petName", "petName is required").not().isEmpty()],
+    [check("petType", "petType is required").not().isEmpty()],
+    [check("petLostLocation", "petLostLocation is required").not().isEmpty()],
+    [check("postType", "postType is required").not().isEmpty()],
+    [check("petPicture", "petPicture is required").not().isEmpty()], */
+  async (req, res) => {
+    const errors = validationResult(req);
+    /*  if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+ */
+    try {
+      //const user = await User.findById(req.user.id).select("-password");
+      const post = await Post.findById(req.params.id);
+      console.log(post.id);
+      const { id } = req.params;
+
+      if (!post) {
+        return res.status(404).json({ msg: "Post not found" });
+      }
+
+      //Check user
+      if (post.user.toString() !== req.user.id) {
+        return res.status(401).json({ msg: "User not authorized" });
+      }
+
+      const updatedPost = {
+        text: req.body.text,
+        name: user.name,
+        user: req.user.id,
+        petName: req.body.petName,
+        petType: req.body.petType,
+        petLostLocation: req.body.petLostLocation,
+        postType: req.body.postType,
+        petPicture: req.body.petPicture,
+        _id: req.post.id,
+      };
+
+      await Post.findByIdAndUpdate(req.post.id, updatedPost, {
+        new: true,
+      });
+      res.json(updatedPost);
+      console.log(post);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send("Server error");
+    }
+  }
+);
 
 // @route  Post api/posts/comment/:id
 // @desc   Comment on a post
@@ -167,7 +241,7 @@ router.delete("/comment/:id/:comment_id", auth, async (req, res) => {
 
     //Check user
     if (comment.user.toString() !== req.user.id) {
-      return res.status(401).json({ msg: "User not authorised" });
+      return res.status(401).json({ msg: "User not authoriZed" });
 
       // Get remove index
       const removeIndex = post.comments

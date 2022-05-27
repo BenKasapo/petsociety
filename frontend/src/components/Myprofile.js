@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
 import "./Myprofile.css";
 import Posts from "./Posts.js";
 import { useDispatch, useSelector } from "react-redux";
 import { setLogout } from "../features/auth";
+import { deleteTour, getTourByUser } from "../features/posts";
+import {
+  MDBCard,
+  MDBCardTitle,
+  MDBCardText,
+  MDBCardBody,
+  MDBCardImage,
+  MDBRow,
+  MDBCol,
+  MDBBtn,
+  MDBIcon,
+  MDBCardGroup,
+} from "mdb-react-ui-kit";
+import { toast } from "react-toastify";
+
 const Myprofile = () => {
   const { user } = useSelector((state) => ({ ...state.auth }));
   const dispatch = useDispatch();
@@ -12,6 +27,24 @@ const Myprofile = () => {
     dispatch(setLogout());
   };
 
+  const { userTours, loading } = useSelector((state) => ({ ...state.post }));
+  const userId = user?.result?._id;
+
+  useEffect(() => {
+    if (userId) {
+      dispatch(getTourByUser(userId));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userId]);
+
+  if (loading) {
+    return <h2>LOADING...</h2>;
+  }
+  const handleDelete = (id) => {
+    if (window.confirm("Do you want to delete this Post?")) {
+      dispatch(deleteTour({ id, toast }));
+    }
+  };
   return (
     <div className="profile">
       <div className="contenaireprofil">
@@ -42,14 +75,77 @@ const Myprofile = () => {
           <div className="tile">
             <h1>Your actual Posts </h1>
           </div>
+
+          <div>{userTours.length === 0 && <p> No posts found</p>}</div>
           <div className="posts_user">
-            <Posts
-              petPicture="https://news.wttw.com/sites/default/files/field/image/FindingRoverCACC_0328.jpg"
-              petName={"Spartacus "}
-              text={
-                "My dog was found yesterday he is so happy ,thanks for helping me"
-              }
-            />
+            <div>
+              {userTours &&
+                userTours.map((item, index) => (
+                  <>
+                    <div key={index}>
+                      <div>{item.petPicture} </div>
+                      <div>{item.petName} </div>
+                      <div>{item.petLostLocation}</div>
+                      <div>{item.petType}</div>
+                      <div>{item.postType}</div>
+                      <div>{item.text}</div>
+                      <div>
+                        {item.comments.map((m, index) => (
+                          <div key={index}>
+                            <h1>{m.text}</h1>
+                          </div>
+                        ))}
+                      </div>
+                      <button>Edit </button>
+
+                      <button onClick={() => handleDelete(item._id)}>
+                        Delete{" "}
+                      </button>
+                    </div>
+                    <hr></hr>
+                  </>
+                ))}
+            </div>
+            {/*     <div>
+              {userTours &&
+                userTours.map((item,index) => (
+                  <Posts key={index} name={item.petName} />
+                ))}
+            </div>
+ */}
+
+            {/*    {userTours &&
+              userTours.map((item) => (
+                <MDBCardGroup key={item._id}>
+                  <MDBCard style={{ maxWidth: "600px" }} className="mt-2">
+                    <MDBRow className="g-0">
+                      <MDBCol md="4">
+                        <MDBCardImage
+                          className="rounded"
+                          src={item.imageFile}
+                          alt={item.title}
+                          fluid
+                        />
+                      </MDBCol>
+                      <MDBCol md="8">
+                        <MDBCardBody>
+                          <MDBCardTitle className="text-start">
+                            {item.title}
+                          </MDBCardTitle>{" "}
+                          <div
+                            style={{
+                              marginLeft: "5px",
+                              float: "right",
+                              marginTop: "-60px",
+                            }}
+                          ></div>
+                        </MDBCardBody>
+                      </MDBCol>
+                    </MDBRow>
+                  </MDBCard>
+                </MDBCardGroup>
+              ))} */}
+
             <Posts
               petPicture="https://dogginarounddaycare.com/wp-content/uploads/2017/06/doggin_blog_first_time_pet_owner.002.jpg"
               petName={"best friend "}

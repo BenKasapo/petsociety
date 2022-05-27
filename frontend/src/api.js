@@ -12,4 +12,21 @@ export const createTour = (tourData) =>
       }`,
     },
   });
-export const getTours = (tourData) => API.get("api/posts", tourData);
+export const getTours = () => API.get("api/posts");
+export const getTour = (id) => API.get(`/api/posts/${id}`);
+export const getTourByUser = (userId) =>
+  API.get(`/api/posts/user_posts`, {
+    headers: {
+      Authorization: `Bearer ${
+        JSON.parse(localStorage.getItem("profile"))["token"]
+      }`,
+    },
+  });
+export const deleteTour = (id) =>
+  API.delete(`/api/posts/${id}`, {
+    headers: {
+      Authorization: `Bearer ${
+        JSON.parse(localStorage.getItem("profile"))["token"]
+      }`,
+    },
+  });
