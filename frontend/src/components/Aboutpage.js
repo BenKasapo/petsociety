@@ -10,7 +10,7 @@ function Aboutpage() {
           <h3>About Us </h3>
         </div>
 
-        <div className="span">
+        <div className="spane">
           <span>
             <p>
               we are a group of 4 engineer student of Girne American University
@@ -28,47 +28,41 @@ function Aboutpage() {
           </span>
         </div>
         <div className="members">
-          <div className="member">
-            <Aboutus
-              paragraph={
-                "Congolese (Drc)student of Girne American University , at her last semester , learning web back and front end using javascript , nodejs and css all in ReactJS"
-              }
-              title={"Web Developper"}
-              name={"Joelle Akilimali"}
-              img="https://www.biography.com/.image/t_share/MTczNjEwODI2NTg5MDg3MTI0/michelle-obama-gettyimages-85246899.jpg"
-            />
-          </div>
-          <div className="member">
-            <Aboutus
-              paragraph={
-                "Congolese (Drc)student of Girne American University , at her last semester , learning web back and front end using javascript , nodejs and css all in ReactJS"
-              }
-              title={"Full stack developper"}
-              name={"Ben Kasapo"}
-              img="https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTE4MDAzNDEwNzg5ODI4MTEw/barack-obama-12782369-1-402.jpg"
-            />
-          </div>
+          <Aboutus
+            paragraph={
+              "Congolese (Drc)student of Girne American University , at her last semester , learning web back and front end using javascript , nodejs and css all in ReactJS"
+            }
+            title={"Web Developper"}
+            name={"Joelle Akilimali"}
+            img="https://www.biography.com/.image/t_share/MTczNjEwODI2NTg5MDg3MTI0/michelle-obama-gettyimages-85246899.jpg"
+          />
 
-          <div className="member">
-            <Aboutus
-              paragraph={
-                "Congolese (Drc)student of Girne American University , at her last semester , learning web back and front end using javascript , nodejs and css all in ReactJS"
-              }
-              title={"Web Developper"}
-              name={"Ibrahim Akilimali"}
-              img="https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTE4MDAzNDEwNzg5ODI4MTEw/barack-obama-12782369-1-402.jpg"
-            />
-          </div>
-          <div className="member">
-            <Aboutus
-              paragraph={
-                "Congolese (Drc)student of Girne American University , at her last semester , learning web back and front end using javascript , nodejs and css all in ReactJS"
-              }
-              title={"Web Developper"}
-              name={"Daisy Kasapo"}
-              img="https://www.biography.com/.image/t_share/MTczNjEwODI2NTg5MDg3MTI0/michelle-obama-gettyimages-85246899.jpg"
-            />
-          </div>
+          <Aboutus
+            paragraph={
+              "Congolese (Drc)student of Girne American University , at her last semester , learning web back and front end using javascript , nodejs and css all in ReactJS"
+            }
+            title={"Full stack developper"}
+            name={"Ben Kasapo"}
+            img="https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTE4MDAzNDEwNzg5ODI4MTEw/barack-obama-12782369-1-402.jpg"
+          />
+
+          <Aboutus
+            paragraph={
+              "Congolese (Drc)student of Girne American University , at her last semester , learning web back and front end using javascript , nodejs and css all in ReactJS"
+            }
+            title={"Web Developper"}
+            name={"Ibrahim Akilimali"}
+            img="https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTE4MDAzNDEwNzg5ODI4MTEw/barack-obama-12782369-1-402.jpg"
+          />
+
+          <Aboutus
+            paragraph={
+              "Congolese (Drc)student of Girne American University , at her last semester , learning web back and front end using javascript , nodejs and css all in ReactJS"
+            }
+            title={"Web Developper"}
+            name={"Daisy Kasapo"}
+            img="https://www.biography.com/.image/t_share/MTczNjEwODI2NTg5MDg3MTI0/michelle-obama-gettyimages-85246899.jpg"
+          />
         </div>
       </div>
       <Footer />

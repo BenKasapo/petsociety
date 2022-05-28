@@ -61,6 +61,32 @@ export const deleteTour = createAsyncThunk(
     }
   }
 );
+export const updateTour = createAsyncThunk(
+  "tour/updateTour",
+  async ({ id, updatedTourData, toast, navigate }, { rejectWithValue }) => {
+    try {
+      const response = await Api.updateTour(updatedTourData, id);
+      toast.success("Postupdated successfully");
+      navigate("/Myprofile");
+      return response.data;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+export const commentPost = createAsyncThunk(
+  "tour/commentPost",
+  async ({ id, commentData, navigate, toast }, { rejectWithValue }) => {
+    try {
+      const response = await Api.commentPost(commentData, id);
+      toast.success("comment added Added Successfully");
+      // navigate("/");
+      return response.data;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
 
 const postSlice = createSlice({
   name: "post",
@@ -71,6 +97,7 @@ const postSlice = createSlice({
     userTours: [],
     tour: {},
     user: "",
+    comments: [],
   },
   extraReducers: {
     [createTour.pending]: (state, action) => {
@@ -118,6 +145,27 @@ const postSlice = createSlice({
       state.loading = false;
       state.error = action.payload.message;
     },
+    [updateTour.pending]: (state, action) => {
+      state.loading = true;
+    },
+    [updateTour.fulfilled]: (state, action) => {
+      state.loading = false;
+      const {
+        arg: { id },
+      } = action.meta;
+      if (id) {
+        state.userTours = state.userTours.map((item) =>
+          item._id === id ? action.payload : item
+        );
+        state.tours = state.tours.map((item) =>
+          item._id === id ? action.payload : item
+        );
+      }
+    },
+    [updateTour.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = action.payload.message;
+    },
     [deleteTour.pending]: (state, action) => {
       state.loading = true;
     },
@@ -135,6 +183,24 @@ const postSlice = createSlice({
     [deleteTour.rejected]: (state, action) => {
       state.loading = false;
       state.error = action.payload.message;
+    },
+
+    [commentPost.pending]: (state, action) => {
+      state.loading = true;
+    },
+    [commentPost.fulfilled]: (state, action) => {
+      state.loading = false;
+      const {
+        arg: { id },
+      } = action.meta;
+      if (id) {
+        state.comments = [action.payload];
+      }
+    },
+
+    [commentPost.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = action.payload.msg;
     },
   },
 });

@@ -32,6 +32,7 @@ function App() {
           <Route path="/Foundpets" element={<Foundpets />} />
           <Route path="/Myprofile" element={<Myprofile />} />
           <Route path="/addpost" element={<Add_post />} />
+          <Route path="/editpost/:id" element={<Add_post />} />
         </Routes>
       </Router>
     </div>

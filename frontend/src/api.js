@@ -30,3 +30,26 @@ export const deleteTour = (id) =>
       }`,
     },
   });
+
+export const updateTour = (updatedTourData, id) =>
+  API.patch(`/api/posts/${id}`, updatedTourData, {
+    headers: {
+      Authorization: `Bearer ${
+        JSON.parse(localStorage.getItem("profile"))["token"]
+      }`,
+    },
+  });
+
+//
+export const commentPost = (id, commentData) =>
+  API.post(
+    `/api/posts/comment/${id}`,
+    { commentData },
+    {
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("profile"))["token"]
+        }`,
+      },
+    }
+  );

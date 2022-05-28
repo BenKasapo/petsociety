@@ -40,3 +40,13 @@
 .map {
   height: 300px;
 }
+.postgen {
+  display: flex;
+}
+.comment {
+  margin-left: 40px;
+  border-bottom: 5px solid #888;
+}
+.comment > .commentpart {
+  border-bottom: 1px solid #888;
+}

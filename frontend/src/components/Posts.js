@@ -2,6 +2,15 @@ import Footer from "./Footer";
 
 import Commentpost from "./Commentpost";
 import "./Posts.css";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { Button } from "react-bootstrap";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+const initialState = {
+  commentText: "",
+};
+
 const Posts = ({
   petName,
   petType,
@@ -10,23 +19,69 @@ const Posts = ({
   text,
   postType,
 }) => {
+  const [commentData, setCommentData] = useState(initialState);
+
+  const { commentPost, loading, error } = useSelector((state) => ({
+    ...state.post,
+  }));
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { commentText } = commentData;
+
+  const onInputChange = (e) => {
+    const { name, value } = e.target;
+    setCommentData({ ...commentData, [name]: value });
+  };
+  const { user } = useSelector((state) => ({ ...state.auth }));
+
+  const addComment = (id, e) => {
+    e.preventDefault();
+    if (commentText) {
+      dispatch(commentPost({ id, commentData, navigate, toast }));
+      handleClear();
+    }
+  };
+
+  useEffect(() => {
+    error && toast.error(error);
+  }, [error]);
+  const handleClear = () => {
+    setCommentData({
+      commentText: "",
+    });
+  };
   return (
     <div className="card-containerpost">
-      <div className="cardpost">
-        <div className="sectionpost">
-          <div className="card-elementspost">
-            <div className="image-container">
-              <img src={petPicture} alt="Lost Dog" />
-            </div>
-            <div className="card-text">
-              <h1>{petName}</h1>
-              <p>{petType}</p>
-              <p>{petLostLocation}</p>
-              <p>{text}</p>
-              <h3>{postType} </h3>
-              <button>COMMENT</button>
-            </div>
-          </div>
+      <div className="sectionpost">
+        <div className="image-container">
+          <img src={petPicture} alt="Lost Dog" />
+        </div>
+        <div className="card-text">
+          <h1> Pet Name : {petName}</h1>
+          <h5>Pet Type : {petType}</h5>
+          <h5>Location : {petLostLocation}</h5>
+          <h5> Post Type : {postType} </h5>
+          <p>{text}</p>
+
+          {/*               <>
+                {user?.result?._id && (
+                  <form onSubmit={addComment}>
+                    <textarea
+                      row="4"
+                      cols="50"
+                      value={commentText}
+                      name="commentText"
+                      onChange={onInputChange}
+                    />
+                    <Button onClick={handleClear} type="submit">
+                      Comment
+                    </Button>
+                  </form>
+                )}
+              </> */}
+          <>
+            <Commentpost />
+          </>
         </div>
       </div>
     </div>

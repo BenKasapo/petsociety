@@ -3,8 +3,33 @@
   border-bottom: 1px solid black;
   background: #002d62;
   color: wheat;
+  flex-direction: column;
+
+  align-items: center;
 }
-.contentcomment .post {
+.commentcont {
+  display: flex;
+
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.commentcont > textarea {
+  border: 1px solid #888;
+  outline: none;
+  resize: none;
+}
+button {
+  width: 120px;
+  height: 55px;
+
+  transform: translateY(45px);
+  margin: 0px 10px;
+}
+.btn {
+  margin: 0px 5px;
+}
+/* .contentcomment .post {
   width: 80%;
   display: flex;
   flex-direction: column;
@@ -16,3 +41,4 @@
   margin-top: 5px;
   width: 50%;
 }
+ */

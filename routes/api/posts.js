@@ -144,25 +144,16 @@ router.patch(
     [check("postType", "postType is required").not().isEmpty()],
     [check("petPicture", "petPicture is required").not().isEmpty()], */
   async (req, res) => {
-    const errors = validationResult(req);
+    //const errors = validationResult(req);
     /*  if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
  */
+
     try {
       //const user = await User.findById(req.user.id).select("-password");
-      const post = await Post.findById(req.params.id);
-      console.log(post.id);
-      const { id } = req.params;
-
-      if (!post) {
-        return res.status(404).json({ msg: "Post not found" });
-      }
-
-      //Check user
-      if (post.user.toString() !== req.user.id) {
-        return res.status(401).json({ msg: "User not authorized" });
-      }
+      /*  const post = await Post.findById(req.params.id); */
+      const user = await User.findById(req.user.id).select("-password");
 
       const updatedPost = {
         text: req.body.text,
@@ -173,14 +164,21 @@ router.patch(
         petLostLocation: req.body.petLostLocation,
         postType: req.body.postType,
         petPicture: req.body.petPicture,
-        _id: req.post.id,
       };
+      /*  const { id } = req.params; */
 
-      await Post.findByIdAndUpdate(req.post.id, updatedPost, {
+      if (!updatedPost) {
+        return res.status(404).json({ msg: "Post not found" });
+      }
+
+      //Check user
+      if (updatedPost.user.toString() !== req.user.id) {
+        return res.status(401).json({ msg: "User not authorized" });
+      }
+      await Post.findByIdAndUpdate(req.params.id, updatedPost, {
         new: true,
       });
       res.json(updatedPost);
-      console.log(post);
     } catch (err) {
       console.error(err.message);
       res.status(500).send("Server error");
@@ -242,18 +240,17 @@ router.delete("/comment/:id/:comment_id", auth, async (req, res) => {
     //Check user
     if (comment.user.toString() !== req.user.id) {
       return res.status(401).json({ msg: "User not authoriZed" });
-
-      // Get remove index
-      const removeIndex = post.comments
-        .map((comment) => comment.user.toString())
-        .indexOf(req.user.id);
-
-      post.comments.splice(removeIndex, 1);
-
-      await post.save();
-
-      res.json(post.comments);
     }
+    // Get remove index
+    const removeIndex = post.comments
+      .map((comment) => comment.user.toString())
+      .indexOf(req.user.id);
+
+    post.comments.splice(removeIndex, 1);
+
+    await post.save();
+
+    res.json(post.comments);
   } catch (err) {
     console.error(err.message);
     if (err.kind == "ObjectId") {

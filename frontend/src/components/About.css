@@ -8,17 +8,20 @@
   padding: 20px;
   padding-bottom: 30px;
 }
-.bodyabout .about-us .title {
+.bodyabout > .about-us > .title {
   align-items: center;
   text-align: center;
   font-size: x-large;
+  font-weight: 600;
   font-family: Verdana, Tahoma, sans-serif;
 }
-.bodyabout .about-us .span {
+.bodyabout > .about-us > .spane {
   margin-left: 10px;
+  text-align: center;
+  margin-top: 10px;
 }
 
-.bodyabout .about-us .members {
+.bodyabout > .about-us > .members {
   display: flex;
   justify-content: space-between;
   width: 100%;

@@ -45,6 +45,7 @@ const Myprofile = () => {
       dispatch(deleteTour({ id, toast }));
     }
   };
+
   return (
     <div className="profile">
       <div className="contenaireprofil">
@@ -82,75 +83,40 @@ const Myprofile = () => {
               {userTours &&
                 userTours.map((item, index) => (
                   <>
-                    <div key={index}>
-                      <div>{item.petPicture} </div>
-                      <div>{item.petName} </div>
-                      <div>{item.petLostLocation}</div>
-                      <div>{item.petType}</div>
-                      <div>{item.postType}</div>
-                      <div>{item.text}</div>
-                      <div>
+                    <div className="subposts_user" key={index}>
+                      <div className="subpostsub">
+                        <div>
+                          <img src={item.petPicture} alt="image" />
+                        </div>
+                        <h4>Pet Name: {item.petName} </h4>
+                        <h4>pet Lost Location: {item.petLostLocation}</h4>
+                        <h4>Pet Type: {item.petType}</h4>
+                        <h4>Post Type: {item.postType}</h4>
+                        <div>Text: {item.text}</div>
+                        <div className="buttondesign">
+                          <Link to={`/editpost/${item._id}`}>
+                            <button>Edit </button>
+                          </Link>
+                          <button
+                            className="deletbutton"
+                            onClick={() => handleDelete(item._id)}
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      </div>
+                      <div className="commentpost">
                         {item.comments.map((m, index) => (
-                          <div key={index}>
-                            <h1>{m.text}</h1>
+                          <div className="commentsubpost" key={index}>
+                            <h5>userX : {m.text}</h5>
                           </div>
                         ))}
                       </div>
-                      <button>Edit </button>
-
-                      <button onClick={() => handleDelete(item._id)}>
-                        Delete{" "}
-                      </button>
                     </div>
                     <hr></hr>
                   </>
                 ))}
             </div>
-            {/*     <div>
-              {userTours &&
-                userTours.map((item,index) => (
-                  <Posts key={index} name={item.petName} />
-                ))}
-            </div>
- */}
-
-            {/*    {userTours &&
-              userTours.map((item) => (
-                <MDBCardGroup key={item._id}>
-                  <MDBCard style={{ maxWidth: "600px" }} className="mt-2">
-                    <MDBRow className="g-0">
-                      <MDBCol md="4">
-                        <MDBCardImage
-                          className="rounded"
-                          src={item.imageFile}
-                          alt={item.title}
-                          fluid
-                        />
-                      </MDBCol>
-                      <MDBCol md="8">
-                        <MDBCardBody>
-                          <MDBCardTitle className="text-start">
-                            {item.title}
-                          </MDBCardTitle>{" "}
-                          <div
-                            style={{
-                              marginLeft: "5px",
-                              float: "right",
-                              marginTop: "-60px",
-                            }}
-                          ></div>
-                        </MDBCardBody>
-                      </MDBCol>
-                    </MDBRow>
-                  </MDBCard>
-                </MDBCardGroup>
-              ))} */}
-
-            <Posts
-              petPicture="https://dogginarounddaycare.com/wp-content/uploads/2017/06/doggin_blog_first_time_pet_owner.002.jpg"
-              petName={"best friend "}
-              text={" my best friends together , this is so cute  <3<3"}
-            />
           </div>
         </div>
       </div>

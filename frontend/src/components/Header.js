@@ -17,9 +17,14 @@ const Header = () => {
           <Link to="/aboutpage">
             <li>ABOUT US</li>
           </Link>
-          <Link to="/toggle">
-            <li>SIGN IN</li>
-          </Link>{" "}
+          {user?.result?._id ? (
+            ""
+          ) : (
+            <Link to="/toggle">
+              <li>Sign In</li>
+            </Link>
+          )}
+
           {user?.result?._id && (
             <>
               <Link to="/Myprofile">

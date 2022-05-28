@@ -2,7 +2,7 @@ import React from "react";
 import "./aboutus.css";
 function Aboutus({ img, name, title, paragraph }) {
   return (
-    <div classname="body">
+    <div classname="bodyabout2">
       <div className="contenair">
         <div className="picture">
           <img src={img} alt="image_of team"></img>

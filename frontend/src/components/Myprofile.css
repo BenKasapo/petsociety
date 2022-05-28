@@ -4,22 +4,21 @@
   display: flex;
   flex-direction: column;
 }
-.profile .contenaireprofil .info {
+.profile > .contenaireprofil > .info {
   margin-top: 5px;
   margin-bottom: 5px;
 }
-.profile .contenaireprofil .picture {
-  width: 1320px;
+.profile > .contenaireprofil > .picture {
+  width: 100%;
   height: 300px;
-  display: inline-flex;
   margin-left: 10px;
   margin-top: 5px;
 }
-.profile .contenaireprofil .picture > img {
+.profile > .contenaireprofil > .picture > img {
   width: 100%;
   height: 100%;
 }
-.profile .contenaireprofil .navbar {
+.profile > .contenaireprofil > .navbar {
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
@@ -29,18 +28,51 @@
   height: 70px;
   font-size: 25px;
 }
-.profile .contenaireprofil .navbar > ul {
+.profile > .contenaireprofil > .navbar > ul {
   margin-left: 20px;
   justify-content: space-between;
 }
-.actual .tile {
+.actual > .tile {
   margin-top: 5px;
   border: 1px solid black;
 }
-.actual .posts_user {
+.actual > .posts_user {
   background: white;
   display: flex;
   flex-direction: column;
+}
+.subposts_user {
+  /*height: 300px;*/
+}
 
-  height: auto;
+.posts_user {
+}
+.subposts_user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.subposts_user > .subpostsub {
+  border: 1px solid rgb(0, 0, 0, 0.3);
+  width: 60%;
+  padding-left: 50px;
+  margin: 10px 20px;
+}
+.subpostsub > h4 {
+  font-weight: 600;
+}
+.buttondesign {
+  display: flex;
+  justify-content: space-evenly;
+  transform: translateY(-50px);
+  margin: 20px 0px;
+}
+.buttondesign.deletebutton {
+  background: red;
+}
+.subposts_user > .commentpost {
+  margin-right: 30px;
+}
+.commentpost > .commentsubpost {
+  border-bottom: 1px solid #000;
 }
