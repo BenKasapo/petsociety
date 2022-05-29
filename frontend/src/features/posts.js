@@ -66,7 +66,7 @@ export const updateTour = createAsyncThunk(
   async ({ id, updatedTourData, toast, navigate }, { rejectWithValue }) => {
     try {
       const response = await Api.updateTour(updatedTourData, id);
-      toast.success("Postupdated successfully");
+      toast.success("Post updated successfully");
       navigate("/Myprofile");
       return response.data;
     } catch (err) {
@@ -194,7 +194,12 @@ const postSlice = createSlice({
         arg: { id },
       } = action.meta;
       if (id) {
-        state.comments = [action.payload];
+        state.userTours = state.userTours.map((item) =>
+          item._id === id ? action.payload : item
+        );
+        state.tours = state.tours.map((item) =>
+          item._id === id ? action.payload : item
+        );
       }
     },
 

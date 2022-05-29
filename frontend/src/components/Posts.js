@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 const initialState = {
   commentText: "",
 };
@@ -41,7 +41,21 @@ const Posts = ({
       handleClear();
     }
   };
+  const { userTours } = useSelector((state) => ({
+    ...state.post,
+  }));
+  const { id } = useParams();
 
+  useEffect(() => {
+    if (id) {
+      const singleTour = userTours.find((tour) => tour._id === id);
+      console.log(singleTour);
+      commentData({ ...singleTour });
+    } else {
+      console.log("no id ");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]);
   useEffect(() => {
     error && toast.error(error);
   }, [error]);
@@ -62,6 +76,19 @@ const Posts = ({
           <h5>Location : {petLostLocation}</h5>
           <h5> Post Type : {postType} </h5>
           <p>{text}</p>
+          <form onSubmit={addComment}>
+            <textarea
+              row="4"
+              cols="50"
+              value={commentText}
+              name="commentText"
+              onChange={onInputChange}
+              placeholder="Enter a comment"
+            />
+            <Button className="btn" onClick={handleClear} type="submit">
+              Comment
+            </Button>
+          </form>
 
           {/*               <>
                 {user?.result?._id && (
@@ -79,9 +106,8 @@ const Posts = ({
                   </form>
                 )}
               </> */}
-          <>
-            <Commentpost />
-          </>
+
+          <>{/* <Commentpost />*/}</>
         </div>
       </div>
     </div>

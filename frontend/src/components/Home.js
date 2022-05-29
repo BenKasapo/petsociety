@@ -6,6 +6,8 @@ import "./Home.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getTours } from "../features/posts.js";
 import { useEffect } from "react";
+import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const { tours, loading } = useSelector((state) => ({ ...state.post }));
@@ -50,14 +52,21 @@ const Home = () => {
                     (item, index) => (
                       <div className="postgen">
                         <div className="postblock">
-                          {" "}
                           <Posts key={index} {...item} />
+                          <Link to={`/editcomment/${item._id}`}>
+                            <Button className="btn" type="submit">
+                              redirect
+                            </Button>
+                          </Link>
                         </div>
 
                         <div className="comment">
                           {item.comments.map((m, index) => (
                             <div className="commentpart" key={index}>
-                              <h1>{m.text}</h1>
+                              <p>
+                                <h4 style={{ color: "green" }}>{m.name}</h4>{" "}
+                                {m.text}
+                              </p>
                             </div>
                           ))}
                         </div>

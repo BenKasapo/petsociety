@@ -189,7 +189,7 @@ router.patch(
 // @route  Post api/posts/comment/:id
 // @desc   Comment on a post
 // @access Private
-router.post(
+router.patch(
   "/comment/:id",
   [auth, [check("text", "Text is required").not().isEmpty()]],
   async (req, res) => {

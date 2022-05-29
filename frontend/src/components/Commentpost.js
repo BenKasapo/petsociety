@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { toast } from "react-toastify";
 import "./Commentpost.css";
+import { commentPost } from "../features/posts";
 
 const initialState = {
   commentText: "",
 };
 
-export const Commentpost = ({ textpost, date, name, imagepost }) => {
+const Commentpost = ({ textpost, date, name, imagepost }) => {
   const [commentData, setCommentData] = useState(initialState);
 
-  const { commentPost, loading, error } = useSelector((state) => ({
+  const { loading, error } = useSelector((state) => ({
     ...state.post,
   }));
   const dispatch = useDispatch();
@@ -41,6 +42,19 @@ export const Commentpost = ({ textpost, date, name, imagepost }) => {
       commentText: "",
     });
   };
+  const { userTours } = useSelector((state) => ({
+    ...state.post,
+  }));
+  const { id } = useParams();
+
+  useEffect(() => {
+    if (id) {
+      const singleTour = userTours.find((tour) => tour._id === id);
+      console.log(singleTour);
+      commentData({ ...singleTour });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]);
 
   return (
     <div className="contenaire">

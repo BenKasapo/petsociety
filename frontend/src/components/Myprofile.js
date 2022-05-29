@@ -108,7 +108,10 @@ const Myprofile = () => {
                       <div className="commentpost">
                         {item.comments.map((m, index) => (
                           <div className="commentsubpost" key={index}>
-                            <h5>userX : {m.text}</h5>
+                            <h5>
+                              <h4 style={{ color: "green" }}>{m.name}</h4>
+                              {m.text}
+                            </h5>
                           </div>
                         ))}
                       </div>

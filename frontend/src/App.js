@@ -12,6 +12,8 @@ import Add_post from "./components/Add_post";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setUser } from "./features/auth";
+import Commentpost from "./components/Commentpost";
+import RedirectComment from "./components/RedirectComment";
 function App() {
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem("profile"));
@@ -33,6 +35,7 @@ function App() {
           <Route path="/Myprofile" element={<Myprofile />} />
           <Route path="/addpost" element={<Add_post />} />
           <Route path="/editpost/:id" element={<Add_post />} />
+          <Route path="/editcomment/:id" element={<RedirectComment />} />
         </Routes>
       </Router>
     </div>

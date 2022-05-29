@@ -11,7 +11,7 @@ import FileBase from "react-file-base64";
 import { toast } from "react-toastify";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { createTour } from "../features/posts";
+import { createTour, updateTour } from "../features/posts";
 import axios from "axios";
 import "./Add_post.css";
 import Footer from "./Footer";
@@ -36,18 +36,17 @@ const Add_post = () => {
   const navigate = useNavigate();
 
   const { petName, petType, petLostLocation, text, postType } = tourData;
-  {
-    const { id } = useParams();
 
-    useEffect(() => {
-      if (id) {
-        const singleTour = userTours.find((tour) => tour._id === id);
-        console.log(singleTour);
-        setTourData({ ...singleTour });
-      }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [id]);
-  }
+  const { id } = useParams();
+
+  useEffect(() => {
+    if (id) {
+      const singleTour = userTours.find((tour) => tour._id === id);
+      console.log(singleTour);
+      setTourData({ ...singleTour });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]);
 
   useEffect(() => {
     error && toast.error(error);
@@ -58,10 +57,12 @@ const Add_post = () => {
     console.log(tourData);
     console.log(user);
     if (petName && petType && petLostLocation && text && postType) {
-      dispatch(createTour({ tourData, navigate, toast }));
-      //else {
-      /*  dispatch(updateTour({ id, updatedTourData, toast, navigate }));*/
-      //  }
+      const updatedTourData = { ...tourData, name: user?.result?.name };
+      if (!id) {
+        dispatch(createTour({ tourData, navigate, toast }));
+      } else {
+        dispatch(updateTour({ id, updatedTourData, toast, navigate }));
+      }
       handleClear();
       // console.log(JSON.parse(localStorage.getItem("profile"))["token"])
       // axios.post("http://localhost:5000/api/posts", tourData, {
@@ -71,6 +72,7 @@ const Add_post = () => {
       // })
     }
   };
+
   const onInputChange = (e) => {
     const { name, value } = e.target;
     setTourData({ ...tourData, [name]: value });
@@ -115,7 +117,7 @@ const Add_post = () => {
       </>
       <div className="addpostcont">
         <MDBCard alignment="center">
-          <h5>{/*id?"Update Tour" :*/ "Add Post"}</h5>
+          <h5>{id ? "Update Tour" : "Add Post"}</h5>
           <MDBCardBody className="black">
             <MDBValidation
               onSubmit={handleSubmit}
@@ -206,7 +208,7 @@ const Add_post = () => {
               </div>
               <div className="col-12">
                 <MDBBtn style={{ width: "100%" }}>
-                  {/*id ? "Update" :*/ "Submit"}
+                  {id ? "Update" : "Submit"}
                 </MDBBtn>
                 <MDBBtn
                   style={{ width: "100%" }}

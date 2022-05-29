@@ -42,7 +42,7 @@ export const updateTour = (updatedTourData, id) =>
 
 //
 export const commentPost = (id, commentData) =>
-  API.post(
+  API.patch(
     `/api/posts/comment/${id}`,
     { commentData },
     {
