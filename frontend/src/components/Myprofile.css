@@ -17,6 +17,7 @@
 .profile > .contenaireprofil > .picture > img {
   width: 100%;
   height: 100%;
+  object-fit: contain;
 }
 .profile > .contenaireprofil > .navbar {
   align-items: center;

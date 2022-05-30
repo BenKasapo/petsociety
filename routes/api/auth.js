@@ -26,15 +26,15 @@ router.get("/", auth, async (req, res) => {
 // @access Public
 router.post(
   "/",
-  [
+  /*  [
     check("email", "Please include a valid email").isEmail(),
     check("password", "Please password is required").exists(),
-  ],
+  ], */
   async (req, res) => {
-    const errors = validationResult(req);
+    /*   const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
-    }
+    } */
     const { email, password } = req.body;
 
     // See if user exixts
@@ -42,16 +42,12 @@ router.post(
       let user = await User.findOne({ email });
 
       if (!user) {
-        return res
-          .status(400)
-          .json({ errors: [{ msg: "Invalid Credentials" }] });
+        return res.status(400).json({ msg: "Invalid Credentials" });
       }
 
       const isMatch = await bcrypt.compare(password, user.password);
       if (!isMatch) {
-        return res
-          .status(400)
-          .json({ errors: [{ msg: "Invalid  Credentials" }] });
+        return res.status(400).json({ msg: "Invalid Credentials" });
       }
 
       // Return jsonwebtoken

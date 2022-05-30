@@ -29,6 +29,9 @@ function Registration() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (name === "" || email === "" || phoneNumber === "" || password === "") {
+      toast.error(" you need to enter your details ");
+    }
     if (name && email && password && phoneNumber) {
       dispatch(register({ formData, navigate, toast }));
     }
@@ -56,7 +59,7 @@ function Registration() {
             <div className="little_box">
               <span className="dtls">Email </span>
               <input
-                type="text"
+                type="email"
                 name="email"
                 value={email}
                 onChange={(e) => onChange(e)}

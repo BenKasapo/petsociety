@@ -12,21 +12,21 @@ const Post = require("../../models/Post");
 // @access Private
 router.post(
   "/",
-  [
-    auth,
-    [check("text", "Text is required").not().isEmpty()],
+
+  auth,
+  /*  [check("text", "Text is required").not().isEmpty()],
     [check("petName", "petName is required").not().isEmpty()],
     [check("petType", "petType is required").not().isEmpty()],
     [check("petLostLocation", "petLostLocation is required").not().isEmpty()],
     [check("postType", "postType is required").not().isEmpty()],
-    // [check("petPicture", "petPicture is required").not().isEmpty()],
-  ],
+     [check("petPicture", "petPicture is required").not().isEmpty()], */
+
   async (req, res) => {
-    const errors = validationResult(req);
+    /*  const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-
+ */
     try {
       //const user = await User.findById(req.user.id).select("-password");
       const user = await User.findById(req.user.id).select("-password");
@@ -189,35 +189,29 @@ router.patch(
 // @route  Post api/posts/comment/:id
 // @desc   Comment on a post
 // @access Private
-router.patch(
-  "/comment/:id",
-  [auth, [check("text", "Text is required").not().isEmpty()]],
-  async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
+router.post("/comment/:id", auth, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select("-password");
+    const post = await Post.findById(req.params.id);
 
-    try {
-      const user = await User.findById(req.user.id).select("-password");
-      const post = await Post.findById(req.params.id);
+    const newComment = {
+      text: req.body.text,
+      name: user.name,
+      user: req.user.id,
+    };
 
-      const newComment = {
-        text: req.body.text,
-        name: user.name,
-        user: req.user.id,
-      };
+    post.comments.push(newComment);
 
-      post.comments.unshift(newComment);
-
-      await post.save();
-      res.json(post.comments);
-    } catch (err) {
-      console.error(err.message);
-      res.status(500).send("Server error");
-    }
+    const updatedPost = await Post.findByIdAndUpdate(req.params.id, post, {
+      new: true,
+    });
+    /*   await post.save(); */
+    res.json(updatedPost);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
   }
-);
+});
 
 // @route  Delete api/posts/comment/:id/:comment_id
 // @desc   Delete Comment

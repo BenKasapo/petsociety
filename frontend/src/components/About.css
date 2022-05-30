@@ -23,6 +23,8 @@
 
 .bodyabout > .about-us > .members {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
+  justify-content: center;
+
+  flex-wrap: wrap;
+  /* width: 100%; */
 }

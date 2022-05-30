@@ -14,6 +14,7 @@ import { useDispatch } from "react-redux";
 import { setUser } from "./features/auth";
 import Commentpost from "./components/Commentpost";
 import RedirectComment from "./components/RedirectComment";
+import Prelogin from "./components/Prelogin";
 function App() {
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem("profile"));
@@ -30,6 +31,7 @@ function App() {
           <Route path="/pages" element={<Search />} />
           <Route path="/" element={<Home />} />
           <Route path="/toggle" element={<Toggle />} />
+          <Route path="/Prelogin" element={<Prelogin />} />
           <Route path="/Lostpets" element={<Lostpets />} />
           <Route path="/Foundpets" element={<Foundpets />} />
           <Route path="/Myprofile" element={<Myprofile />} />

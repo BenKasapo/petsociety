@@ -59,7 +59,7 @@ const Home = () => {
                             </Button>
                           </Link>
                         </div>
-
+                        <h2> {item.name}</h2>
                         <div className="comment">
                           {item.comments.map((m, index) => (
                             <div className="commentpart" key={index}>

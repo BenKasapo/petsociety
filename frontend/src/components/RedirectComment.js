@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
-import { commentPost } from "../api";
+import { commentPost, getTour } from "../api";
 import Posts from "./Posts";
 
 const initialState = {
@@ -22,25 +22,20 @@ const RedirectComment = () => {
   const { userTours } = useSelector((state) => ({
     ...state.post,
   }));
-  console.log(id);
-  useEffect(() => {
-    if (id) {
-      const singleTour = userTours.find((tour) => tour._id === id);
-      console.log(singleTour);
-      console.log(id);
-      commentData({ ...singleTour });
-    } else {
-      console.log(" no id no token");
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id]);
+  //console.log(id);
+
   const addComment = (e) => {
     e.preventDefault();
     if (commentText) {
-      dispatch(commentPost({ id, commentData }));
-      console.log(id);
-    } else {
-      console.log("no id");
+      if (!id) {
+        console.log("no id");
+      } else {
+        console.log(id);
+        const updatedTourData = { ...commentData };
+        console.log(updatedTourData);
+        dispatch(commentPost(id, { updatedTourData }));
+      }
+      //dispatch(commentPost({ id, updatedTourData }));
     }
   };
 

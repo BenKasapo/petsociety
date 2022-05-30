@@ -7,7 +7,7 @@ export const createTour = createAsyncThunk(
     try {
       const response = await Api.createTour(tourData);
       toast.success("Post Added Successfully");
-      // navigate("/");
+      navigate("/Myprofile");
       return response.data;
     } catch (err) {
       return rejectWithValue(err.response.data);
@@ -31,7 +31,7 @@ export const getTour = createAsyncThunk(
   "tour/getTour",
   async (id, { rejectWithValue }) => {
     try {
-      const response = await Api.getTour();
+      const response = await Api.getTour(id);
       return response.data;
     } catch (err) {
       return rejectWithValue(err.response.data);
@@ -78,7 +78,7 @@ export const commentPost = createAsyncThunk(
   "tour/commentPost",
   async ({ id, commentData, navigate, toast }, { rejectWithValue }) => {
     try {
-      const response = await Api.commentPost(commentData, id);
+      const response = await Api.commentPost(id, commentData);
       toast.success("comment added Added Successfully");
       // navigate("/");
       return response.data;

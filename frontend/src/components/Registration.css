@@ -89,8 +89,9 @@ form .gender-details .categories {
   border-color: #d9d9d9;
   background: #89b4d1;
 }
-form input[type="radio"] {
-  display: none;
+form input[type="email"] {
+  background: #002d62;
+  color: white;
 }
 form .button {
   height: 45px;

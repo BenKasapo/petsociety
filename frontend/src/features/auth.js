@@ -21,7 +21,7 @@ export const register = createAsyncThunk(
     try {
       const response = await Api.signUp(formData);
       toast.success("Register Successfully");
-      navigate("/toggle");
+      navigate("/Prelogin");
       return response.data;
     } catch (err) {
       return rejectWithValue(err.response.data);

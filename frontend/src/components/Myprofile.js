@@ -50,7 +50,7 @@ const Myprofile = () => {
     <div className="profile">
       <div className="contenaireprofil">
         <div className="picture">
-          <img src="Images/owner.jpg"></img>
+          <img src="Images/PETSOCIETY.jpg"></img>
         </div>
         <div className="info">
           {user?.result?._id && (
@@ -62,7 +62,9 @@ const Myprofile = () => {
         </div>
         <div className="navbarprofile">
           <ul>
-            <li>Posts</li>
+            <Link to="/Myprofile">
+              <li>Posts</li>
+            </Link>
             <Link to="/addpost">
               <li>Add Post</li>
             </Link>

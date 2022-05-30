@@ -76,19 +76,23 @@ const Posts = ({
           <h5>Location : {petLostLocation}</h5>
           <h5> Post Type : {postType} </h5>
           <p>{text}</p>
-          <form onSubmit={addComment}>
-            <textarea
-              row="4"
-              cols="50"
-              value={commentText}
-              name="commentText"
-              onChange={onInputChange}
-              placeholder="Enter a comment"
-            />
-            <Button className="btn" onClick={handleClear} type="submit">
-              Comment
-            </Button>
-          </form>
+          {user?.result?._id && (
+            <>
+              <form onSubmit={addComment}>
+                <textarea
+                  row="4"
+                  cols="50"
+                  value={commentText}
+                  name="commentText"
+                  onChange={onInputChange}
+                  placeholder="Enter a comment"
+                />
+                <Button className="btn" onClick={handleClear} type="submit">
+                  Comment
+                </Button>
+              </form>
+            </>
+          )}
 
           {/*               <>
                 {user?.result?._id && (

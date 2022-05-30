@@ -29,6 +29,9 @@ function Prelogin(setAlert) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if ((email == "" && password == "") || email == "" || password == "") {
+      toast.error(" you need to enter your details ");
+    }
     if (email && password) {
       dispatch(login({ formData, navigate, toast }));
     }

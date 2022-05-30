@@ -9,14 +9,17 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  width: 400px;
   /*justify-content: space-between;*/
+
   margin-right: 30px;
   background: linear-gradient(130deg, #768fa0, #abaaaf);
   border-radius: 10px;
   justify-content: space-between;
 }
 .contenair > .picture {
-  width: 350px;
+  width: 95%;
+  margin-bottom: 5px;
 }
 .contenair.picture > img {
   width: 100%;

@@ -41,8 +41,9 @@ export const updateTour = (updatedTourData, id) =>
   });
 
 //
-export const commentPost = (id, commentData) =>
-  API.patch(
+
+export const commentPost = (id, { commentData }) =>
+  API.post(
     `/api/posts/comment/${id}`,
     { commentData },
     {

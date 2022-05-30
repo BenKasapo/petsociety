@@ -94,7 +94,7 @@ const Add_post = () => {
       <>
         <div className="subcontpost">
           <div className="picture">
-            <img src="Images/owner.jpg"></img>
+            <img src="Images/PETSOCIETY.jpg"></img>
           </div>
 
           <div className="navbarprofile">
@@ -117,7 +117,7 @@ const Add_post = () => {
       </>
       <div className="addpostcont">
         <MDBCard alignment="center">
-          <h5>{id ? "Update Tour" : "Add Post"}</h5>
+          <h5>{id ? "UPDATE POST" : "Add Post"}</h5>
           <MDBCardBody className="black">
             <MDBValidation
               onSubmit={handleSubmit}
