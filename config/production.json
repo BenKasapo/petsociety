@@ -2,3 +2,7 @@
   "mongoURI": "mongodb+srv://ben123:ben123@petsociety.8jdud.mongodb.net/?retryWrites=true&w=majority",
   "jwtSecret": "mysecrettoken"
 }
+{
+  "mongoURI": "mongodb+srv://ben123:ben123@petsociety.8jdud.mongodb.net/?retryWrites=true&w=majority",
+  "jwtSecret": "mysecrettoken"
+}
