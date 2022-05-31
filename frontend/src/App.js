@@ -15,6 +15,8 @@ import { setUser } from "./features/auth";
 import Commentpost from "./components/Commentpost";
 import RedirectComment from "./components/RedirectComment";
 import Prelogin from "./components/Prelogin";
+import HomePage from "./components/HomePage";
+
 function App() {
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem("profile"));
@@ -29,7 +31,8 @@ function App() {
         <Routes>
           <Route path="/aboutpage" element={<Aboutpage />} />
           <Route path="/pages" element={<Search />} />
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/posts" element={<Home />} />
           <Route path="/toggle" element={<Toggle />} />
           <Route path="/Prelogin" element={<Prelogin />} />
           <Route path="/Lostpets" element={<Lostpets />} />
@@ -38,6 +41,7 @@ function App() {
           <Route path="/addpost" element={<Add_post />} />
           <Route path="/editpost/:id" element={<Add_post />} />
           <Route path="/editcomment/:id" element={<RedirectComment />} />
+          <Route path="/postpage" element={<Myprofile />} />
         </Routes>
       </Router>
     </div>

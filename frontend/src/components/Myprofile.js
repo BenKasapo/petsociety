@@ -19,6 +19,8 @@ import {
   MDBCardGroup,
 } from "mdb-react-ui-kit";
 import { toast } from "react-toastify";
+import axios from "axios";
+import { Button } from "react-bootstrap";
 
 const Myprofile = () => {
   const { user } = useSelector((state) => ({ ...state.auth }));
@@ -43,6 +45,23 @@ const Myprofile = () => {
   const handleDelete = (id) => {
     if (window.confirm("Do you want to delete this Post?")) {
       dispatch(deleteTour({ id, toast }));
+    }
+  };
+
+  const deleteComment = async (postID, commentID) => {
+    const res = await axios.delete(
+      `http://localhost:5000/api/posts/comment/${postID}/${commentID}`,
+      {
+        headers: {
+          Authorization: `Bearer ${
+            JSON.parse(localStorage.getItem("profile"))["token"]
+          }`,
+        },
+      }
+    );
+
+    if (res.status == "200") {
+      window.location.href = window.location.href;
     }
   };
 
@@ -114,6 +133,11 @@ const Myprofile = () => {
                               <h4 style={{ color: "green" }}>{m.name}</h4>
                               {m.text}
                             </h5>
+                            <Button
+                              onClick={() => deleteComment(item._id, m._id)}
+                            >
+                              Delete
+                            </Button>
                           </div>
                         ))}
                       </div>

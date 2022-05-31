@@ -42,3 +42,10 @@ button {
   color: white;
   font-weight: 600;
 }
+
+@media screen and (max-width: 768px) {
+  .sectionpost {
+    width: 100%;
+    margin-top: 110px;
+  }
+}

@@ -1,16 +1,19 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { commentPost, getTour } from "../api";
+import { comment } from "../features/comments";
 import Posts from "./Posts";
 
 const initialState = {
   commentText: "",
 };
-
 const RedirectComment = () => {
   const dispatch = useDispatch();
+
+  /* const [postid, setpostid] = useState(""); */
   const [commentData, setCommentData] = useState(initialState);
   const { commentText } = commentData;
   const onInputChange = (e) => {
@@ -19,29 +22,48 @@ const RedirectComment = () => {
   };
 
   const { id } = useParams();
+  //postid = id;
   const { userTours } = useSelector((state) => ({
     ...state.post,
   }));
   //console.log(id);
-
-  const addComment = (e) => {
+  // console.log(postid);
+  const addComment = async (e) => {
     e.preventDefault();
-    if (commentText) {
+
+    const res = await axios.post(
+      `http://localhost:5000/api/posts/comment/${id}`,
+      { text: commentText },
+      {
+        headers: {
+          Authorization: `Bearer ${
+            JSON.parse(localStorage.getItem("profile"))["token"]
+          }`,
+        },
+      }
+    );
+
+    console.log(res);
+
+    if (res?.status == 200) {
+      window.location.href = "/";
+    }
+    /*  if (commentText) {
       if (!id) {
         console.log("no id");
       } else {
         console.log(id);
-        const updatedTourData = { ...commentData };
-        console.log(updatedTourData);
-        dispatch(commentPost(id, { updatedTourData }));
+ 
+        console.log(commentData);
+        dispatch(comment(commentData));
       }
-      //dispatch(commentPost({ id, updatedTourData }));
-    }
+    } */
+    //dispatch(commentPost({ id, updatedTourData }));
   };
 
   return (
     <div>
-      <h1>make your comment</h1>
+      <h1>write your comment</h1>
 
       <form onSubmit={addComment}>
         <textarea
@@ -52,6 +74,7 @@ const RedirectComment = () => {
           onChange={onInputChange}
           placeholder="Enter a comment"
         />
+        {/* <input type="text" value={postid} /> */}
         <Button className="btn" type="submit">
           Comment
         </Button>

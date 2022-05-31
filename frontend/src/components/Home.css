@@ -50,3 +50,8 @@
 .comment > .commentpart {
   border-bottom: 1px solid #888;
 }
+
+@media screen and (max-width: 768px) {
+  .commentpart h4 {
+  }
+}

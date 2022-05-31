@@ -57,7 +57,7 @@ function Footer() {
         </div>
         <div className="right_side">
           <div className="image">
-            <img src="Images/logopet.png" alt="logo" />
+            <img src="images/logo.png" alt="PetSociety" />
           </div>
         </div>
       </div>

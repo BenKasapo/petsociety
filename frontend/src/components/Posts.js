@@ -76,7 +76,7 @@ const Posts = ({
           <h5>Location : {petLostLocation}</h5>
           <h5> Post Type : {postType} </h5>
           <p>{text}</p>
-          {user?.result?._id && (
+          {/*    {user?.result?._id && (
             <>
               <form onSubmit={addComment}>
                 <textarea
@@ -92,7 +92,7 @@ const Posts = ({
                 </Button>
               </form>
             </>
-          )}
+          )} */}
 
           {/*               <>
                 {user?.result?._id && (

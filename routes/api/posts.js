@@ -67,6 +67,18 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/somePost", async (req, res) => {
+  try {
+    const posts = await Post.find().limit(3).populate("user", ["name"]);
+    console.log(posts.length);
+    console.log("number of posts returned : ", posts.length);
+    res.json(posts);
+  } catch (error) {
+    console.error(error.message);
+    return res.status(500).send("Server error");
+  }
+});
+
 /**
  *  @route  Get api/posts/user_posts
     @desc   Get Post by userID
@@ -241,7 +253,7 @@ router.delete("/comment/:id/:comment_id", auth, async (req, res) => {
       .indexOf(req.user.id);
 
     post.comments.splice(removeIndex, 1);
-
+    console.log("deleting object....");
     await post.save();
 
     res.json(post.comments);

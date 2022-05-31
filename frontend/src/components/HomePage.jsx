@@ -12,56 +12,16 @@ import axios from "axios";
 import { useQuery } from "react-query";
 
 async function getPosts() {
-  const { data } = await axios.get("http://localhost:5000/api/posts");
+  const { data } = await axios.get("http://localhost:5000/api/posts/somePost");
   return data;
 }
 
-const Home = () => {
-  const { tours, loading } = useSelector((state) => ({ ...state.post }));
-  const dispatch = useDispatch();
+const HomePage = () => {
   const { user } = useSelector((state) => ({ ...state.auth }));
 
-  const [showLost, setShowLost] = useState(false);
-  const [showFound, setShowFound] = useState(false);
-  const [showAll, setShowAll] = useState(true);
   const { data, isLoading } = useQuery("posts", async () => getPosts());
-  console.log(data);
+
   let posts_to_show = data;
-  let lost_pets;
-  let found_pets;
-
-  lost_pets = data?.filter((lost) => lost.postType.toLowerCase() === "lost");
-  found_pets = data?.filter(
-    (found) => found.postType.toLowerCase() === "found"
-  );
-  if (showAll) {
-    posts_to_show = data;
-  }
-  if (showLost) {
-    posts_to_show = lost_pets;
-  }
-
-  if (showFound) {
-    posts_to_show = found_pets;
-  }
-
-  const handleShowAllPosts = () => {
-    setShowAll(true);
-    setShowFound(false);
-    setShowLost(false);
-  };
-
-  const handleShowFoundPets = () => {
-    setShowAll(false);
-    setShowFound(true);
-    setShowLost(false);
-  };
-
-  const handleShowLostPets = () => {
-    setShowAll(false);
-    setShowFound(false);
-    setShowLost(true);
-  };
 
   const deleteComment = async (postID, commentID) => {
     const res = await axios.delete(
@@ -99,14 +59,14 @@ const Home = () => {
   return (
     <div className="homepage">
       <div className="contenairehome">
+        <div className="map">
+          <GoogleMaps />
+        </div>
+
         <div className="posts">
           <h1> What is new today</h1>
           <div className="image_comment">
             <div className="image">
-              {/*    <div>{tours.length === 0 && <p> No posts found</p>}</div> */}
-              <Button onClick={handleShowAllPosts}>All</Button>
-              <Button onClick={handleShowFoundPets}>Found pets</Button>
-              <Button onClick={handleShowLostPets}>Lost Pets</Button>
               <div>
                 {isLoading && <h1>Loading data....</h1>}
                 {posts_to_show &&
@@ -155,4 +115,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;

@@ -5,11 +5,19 @@ const Header = () => {
   const { user } = useSelector((state) => ({ ...state.auth }));
   return (
     <div className="containerh">
-      <div className="logo">PETSOCIETY</div>
+      <Link to="/">
+        <div className="logo">
+          <img src="images/logo.png" alt="PetSociety" />
+        </div>
+      </Link>
+
       <div className="NavMenu">
         <ul>
           <Link to="/">
             <li>HOME</li>
+          </Link>
+          <Link to="/posts">
+            <li>POSTS</li>
           </Link>
 
           <Link to="/aboutpage">
