@@ -22,7 +22,7 @@ app.use("/api/auth", require("./routes/api/auth"));
 app.use("/api/profile", require("./routes/api/profile"));
 app.use("/api/posts", require("./routes/api/posts"));
 
-//Serve  static assets in Production
+/* //Serve  static assets in Production
 if (process.env.NODE_ENV === "PRODUCTION") {
   // Set static folder
   app.use(express.static("frontend/build"));
@@ -30,7 +30,7 @@ if (process.env.NODE_ENV === "PRODUCTION") {
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
   });
-}
+} */
 
 app.get("/", (req, res) => {
   res.send("APP IS RUNNING...");
