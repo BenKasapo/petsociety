@@ -32,6 +32,10 @@ if (process.env.NODE_ENV === "PRODUCTION") {
   });
 }
 
+app.get("/", (req, res) => {
+  res.send("APP IS RUNNING...");
+});
+
 const Port = process.env.Port || 5000;
 
 app.listen(Port, "0.0.0.0", () =>

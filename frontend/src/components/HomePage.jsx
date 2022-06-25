@@ -75,11 +75,14 @@ const HomePage = () => {
                       <div className="postgen">
                         <div className="postblock">
                           <Posts key={index} {...item} />
-                          <Link to={`/editcomment/${item._id}`}>
-                            <Button className="btn" type="submit">
-                              ADD A COMMENT
-                            </Button>
-                          </Link>
+
+                          {user?.result?._id && (
+                            <Link to={`/editcomment/${item._id}`}>
+                              <Button className="btn" type="submit">
+                                ADD A COMMENT
+                              </Button>
+                            </Link>
+                          )}
                         </div>
                         <h2> {item.name}</h2>
                         <div className="comment">
